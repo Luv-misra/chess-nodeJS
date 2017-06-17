@@ -10,8 +10,40 @@ var k = document.getElementsByClassName("k");
 var n = document.getElementsByClassName("n");
 
 var whoMadeRed = null;
+var side = "white";
+var myside = null;
+
+var authorize = function(target_div){
+
+	console.log(target_div);
+	var img = target_div;
+	console.log(img);
+	var src = img.src;
+	var split_result = src.split('/');
+	src = split_result[split_result.length-1];
+
+	console.log(myside);
+	console.log(side);
+	if(myside == side && src[1]==myside[0]){
+		console.log("AUTHORIZED");
+		return true;
+	}
+	console.log("UNAUTHORIZED");
+	return false;
+}
+
+socket.on('sides',function(data){
+	if(socket.id == data["white"]){
+		myside = "white";
+	}else{
+		myside = "black";
+	}
+});
 
 socket.on('message',function(data){
+
+	side = data["side"];
+
 	if(!data["whoMadeRed"]||!data["attackedOn"]){
 		return;
 	}
@@ -29,6 +61,10 @@ socket.on('message',function(data){
 socket.on('connection', function(data){
     	console.log("I am connected");
    });
+
+socket.on('unauthorized', function(data){
+    console.log("I am unauthorized");
+});
 
 var checkAttack = function(attackedOn){
 	// console.log(whoMadeRed);
@@ -196,6 +232,7 @@ var ifOponent = function(target_div,op){
 }
 
 var bsfunc = function(){
+	
 	var Reddiv = this.parentNode;
 	if(Reddiv.style.backgroundColor=='red'){
 					data = {};
@@ -207,6 +244,9 @@ var bsfunc = function(){
 			removeColor();
 			socket.emit('message',data);
 		// checkAttack(this);
+		return;
+	}
+	if(!authorize(this)){
 		return;
 	}
 	removeColor();
@@ -251,6 +291,9 @@ var bsfunc = function(){
 }
 
 var wsfunc = function(){
+	
+
+	console.log("ho toh gaya authorize ... ab karo kaam");
 	var Reddiv = this.parentNode;
 	if(Reddiv.style.backgroundColor=='red'){
 					data = {};
@@ -261,6 +304,9 @@ var wsfunc = function(){
 			removeColor();
 			socket.emit('message',data);
 		// checkAttack(this);
+		return;
+	}
+	if(!authorize(this)){
 		return;
 	}
 	removeColor();
@@ -304,6 +350,8 @@ var wsfunc = function(){
 }
 
 var checkSelf = function(target_div,same){
+	console.log("came in");
+	console.log(target_div);
 	if(same == undefined || same == null || !same){
 		return;
 	}
@@ -321,23 +369,25 @@ var checkSelf = function(target_div,same){
 	if(img_src==null || img_src==undefined || !img_src){
 		target_div.style.backgroundColor = 'red';
 		target_div.style.opacity = '0.5';
-		console.log("reached des");
+		console.log("reached des...returning true");
 		return true;
 	}
 	if(  img_src[1] != same  ){
 		target_div.style.backgroundColor = 'red';
 		target_div.style.opacity = '0.5';
+		console.log("opposition ki wajha se wapis aaya ");
 		return false;
 	}
-	console.log("end tak")
+	console.log("waha mai khud tha !...tabhi wapis");
 	return false;
 }
 
 var efunc = function(){
+
 	var Reddiv = this.parentNode;
 	if(Reddiv.style.backgroundColor=='red'){
 		console.log("pehle yaha");
-					data = {};
+			data = {};
 			data["attackedOn"]=this.parentNode.id;
 			data["whoMadeRed"]=whoMadeRed.parentNode.id;
 			console.log("e function call hua hai .. data");	
@@ -347,7 +397,10 @@ var efunc = function(){
 		// checkAttack(this);
 		return;
 	}
-	console.log("pehle waha ke baad yaha bhi");
+	if(!authorize(this)){
+		return;
+	}
+	console.log("red was not detected");
 	removeColor();
 	whoMadeRed = this;
 	var src = this.src;
@@ -395,6 +448,9 @@ var efunc = function(){
 }
 
 var hfunc = function(){
+	if(!authorize(this)){
+		return;
+	}
 	console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
 	console.log(this.onclick);
 	var Reddiv = this.parentNode;
@@ -406,6 +462,9 @@ var hfunc = function(){
 			console.log(data);
 			socket.emit('message',data);
 		// checkAttack(this);
+		return;
+	}
+		if(!authorize(this)){
 		return;
 	}
 	removeColor();
@@ -477,6 +536,9 @@ var hfunc = function(){
 }
 
 var cfunc = function(){
+	if(!authorize(this)){
+		return;
+	}
 	var Reddiv = this.parentNode;
 	if(Reddiv.style.backgroundColor=='red'){
 					data = {};
@@ -487,6 +549,9 @@ var cfunc = function(){
 			removeColor();
 			socket.emit('message',data);
 		// checkAttack(this);
+		return;
+	}
+		if(!authorize(this)){
 		return;
 	}
 	removeColor();
@@ -535,6 +600,9 @@ var cfunc = function(){
 }
 
 var qfunc = function(){
+	if(!authorize(this)){
+		return;
+	}
 	var Reddiv = this.parentNode;
 	if(Reddiv.style.backgroundColor=='red'){
 			data = {};
@@ -545,6 +613,9 @@ var qfunc = function(){
 			removeColor();
 			socket.emit('message',data);
 		// checkAttack(this);
+		return;
+	}
+		if(!authorize(this)){
 		return;
 	}
 	removeColor();
@@ -622,6 +693,9 @@ var qfunc = function(){
 }
 
 var kfunc = function(){
+	if(!authorize(this)){
+		return;
+	}
 	var Reddiv = this.parentNode;
 	if(Reddiv.style.backgroundColor=='red'){
 			data = {};
@@ -632,6 +706,9 @@ var kfunc = function(){
 			removeColor();
 			socket.emit('message',data);
 		// checkAttack(this);
+		return;
+	}
+		if(!authorize(this)){
 		return;
 	}
 	removeColor();
@@ -700,7 +777,7 @@ var kfunc = function(){
 }
 
 var nfunc = function(){
-
+	
 	var src = this.src;
 	var split_result = src.split('/');
 	src = split_result[split_result.length-1];
@@ -720,6 +797,9 @@ var nfunc = function(){
 			// checkAttack(this);
 			return;
 		}
+		if(!authorize(this)){
+		return;
+	}
 		removeColor();
 	}	
 }
