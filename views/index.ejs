@@ -1,0 +1,237 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="board.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+	</head>
+
+	<body>
+		<div id="dbody" style="height:100%; width:100%;">
+			
+			<div id="mainDiv">
+				
+				<div id="boardDiv">
+					<img id="board" src="chessBoard.jpg" />
+				</div>
+				
+				<div id="overBoard">
+					<div id="mainP">
+
+						<div id="11" class="P">
+							<img class="PP e" src="eblack2.png"/>
+						</div>
+						<div id="12" class="P" >
+							<img class="PP h" src="hblack2.png"/>
+						</div>
+						<div id="13" class="P" >
+							<img class="PP c" src="cblack2.png"/>
+						</div>
+						<div id="14" class="P" >
+							<img class="PP q" src="qblack2.png"/>
+						</div>
+						<div id="15" class="P" >
+							<img class="PP k" src="kblack2.png"/>
+						</div>
+						<div id="16" class="P" >
+							<img class="PP c" src="cblack2.png"/>
+						</div>
+						<div id="17" class="P" >
+							<img class="PP h" src="hblack2.png"/>
+						</div>
+						<div id="18" class="P" >
+							<img class="PP e" src="eblack2.png"/>
+						</div>
+
+
+						<div id="21" class="P">
+							<img class="PP bs" src="sblack2.png"/>
+						</div>
+						<div id="22" class="P">
+							<img class="PP bs" src="sblack2.png"/>
+						</div>
+						<div id="23" class="P">
+							<img class="PP bs" src="sblack2.png"/>
+						</div>
+						<div id="24" class="P" >
+							<img class="PP bs" src="sblack2.png"/>
+						</div>
+						<div id="25" class="P" >
+							<img class="PP bs" src="sblack2.png"/>
+						</div>
+						<div id="26" class="P" >
+							<img class="PP bs" src="sblack2.png"/>
+						</div>
+						<div id="27" class="P" >
+							<img class="PP bs" src="sblack2.png"/>
+						</div>
+						<div id="28" class="P" >
+							<img class="PP bs" src="sblack2.png"/>
+						</div>
+
+
+						<div id="31" class="P">
+							<img class="PP n"  />
+						</div>
+						<div id="32" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="33" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="34" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="35" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="36" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="37" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="38" class="P">
+							<img class="PP n"/>
+						</div>
+
+
+						<div id="41" class="P">
+							<img class="PP n"/>
+						</div>
+						<div id="42" class="P">
+							<img class="PP n"/>
+						</div>
+						<div id="43" class="P">
+							<img class="PP n"/>
+						</div>
+						<div id="44" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="45" class="P">
+							<img class="PP n"/>
+						</div>
+						<div id="46" class="P">
+							<img class="PP n"/>
+						</div>
+						<div id="47" class="P">
+							<img class="PP n"/>
+						</div>
+						<div id="48" class="P">
+							<img class="PP n"/>
+						</div>
+
+
+						<div id="51" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="52" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="53" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="54" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="55" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="56" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="57" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="58" class="P">
+							<img class="PP n" />
+						</div>
+
+
+						<div id="61" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="62" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="63" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="64" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="65" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="66" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="67" class="P">
+							<img class="PP n" />
+						</div>
+						<div id="68" class="P">
+							<img class="PP n" />
+						</div>
+
+
+						<div id="71" class="P" >
+							<img class="PP ws" src="swhite2.png"/>
+						</div>
+						<div id="72" class="P" >
+							<img class="PP ws" src="swhite2.png"/>
+						</div>
+						<div id="73" class="P" >
+							<img class="PP ws" src="swhite2.png"/>
+						</div>
+						<div id="74" class="P" >
+							<img class="PP ws" src="swhite2.png"/>
+						</div>
+						<div id="75" class="P" >
+							<img class="PP ws" src="swhite2.png"/>
+						</div>
+						<div id="76" class="P" >
+							<img class="PP ws" src="swhite2.png"/>
+						</div>
+						<div id="77" class="P" >
+							<img class="PP ws" src="swhite2.png"/>
+						</div>
+						<div id="78" class="P" >
+							<img class="PP ws" src="swhite2.png"/>
+						</div>
+
+
+						<div id="81" class="P">
+							<img class="PP e" src="ewhite2.png"/>
+						</div>
+						<div id="82" class="P">
+							<img class="PP h" src="hwhite2.png"/>
+						</div>
+						<div id="83" class="P">
+							<img class="PP c" src="cwhite2.png"/>
+						</div>
+						<div id="84" class="P">
+							<img class="PP k" src="kwhite2.png"/>
+						</div>
+						<div id="85" class="P">
+							<img class="PP q" src="qwhite2.png"/>
+						</div>
+						<div id="86" class="P">
+							<img class="PP c" src="cwhite2.png"/>
+						</div>
+						<div id="87" class="P">
+							<img class="PP h" src="hwhite2.png"/>
+						</div>
+						<div id="88" class="P" >
+							<img class="PP e" src="ewhite2.png"/>
+						</div>
+
+
+
+					</div> 
+				</div>
+			
+			</div>
+
+		</div>
+	</body>
+	<script src="piece.js"></script>
+</html>

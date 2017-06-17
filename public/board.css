@@ -1,0 +1,57 @@
+body{
+	background-image: url("background.jpg") ;
+	background-size: cover;
+}
+
+#dbody{
+	display: flex;
+	justify-content: space-around;
+}
+
+#mainDiv{
+	height: 600px;
+	width: 600px;
+	position: relative;
+}
+
+#boardDiv{
+	position: absolute;
+	height: 100%;
+	z-index: 0;
+	width: 100%;
+}
+
+#overBoard{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	/*background-color: #000000;*/
+}
+
+#mainP{
+	/*background-color: #000000;*/
+	margin: 17px;
+	margin-top: 16.5px;
+	height: 568px;
+	width: 566px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.P{
+	height: 71px;
+	width: 70.58px;
+	/*background-color: #000000;*/
+}
+
+.PP{
+	height: 100%;
+	width: 100%;
+}
+
+#board{
+	position: absolute;
+	height: 600px;
+	width: 600px;
+}
