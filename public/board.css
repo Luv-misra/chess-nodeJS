@@ -8,6 +8,18 @@ body{
 	justify-content: space-around;
 }
 
+#mainTime{
+	display: flex;
+	justify-content: space-around;
+}
+#time{
+	color: white;
+}
+
+#player{
+	color: white;
+}
+
 #mainDiv{
 	height: 600px;
 	width: 600px;

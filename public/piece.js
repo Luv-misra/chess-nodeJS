@@ -1,4 +1,12 @@
 var socket = io();
+var time = 0;
+var started = false;
+var x = function(){
+	setInterval(function(){
+		time = time + 1;
+		document.getElementById('time').innerHTML = time;
+	},1000);
+}
 
 var bs = document.getElementsByClassName("bs");
 var ws = document.getElementsByClassName("ws");
@@ -43,6 +51,12 @@ socket.on('sides',function(data){
 socket.on('message',function(data){
 
 	side = data["side"];
+	document.getElementById('player').innerHTML = side;
+	time = 0;
+	if(!started){
+		x();
+		started = true;
+	}
 
 	if(!data["whoMadeRed"]||!data["attackedOn"]){
 		return;
@@ -65,6 +79,8 @@ socket.on('connection', function(data){
 socket.on('unauthorized', function(data){
     console.log("I am unauthorized");
 });
+
+
 
 var checkAttack = function(attackedOn){
 	// console.log(whoMadeRed);
