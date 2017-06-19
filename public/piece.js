@@ -126,10 +126,6 @@ var hatao = function(rsrc){
 }
 
 var checkAttack = function(attackedOn){
-	// console.log(whoMadeRed);
-	// console.log("attacked");
-	// console.log(attackedOn);
-	
 
 	var redSrc = whoMadeRed.src;
 	console.log(redSrc);
@@ -142,12 +138,6 @@ var checkAttack = function(attackedOn){
 	
 	var Rsrc = whoMadeRed.src;
 
-	// var att = new function(){
-	// 	this.red = redSrc;
-	// 	this.att = attSrc;
-		
-	// }
-	
 	whoMadeRed.src="";
 	
 
@@ -418,6 +408,7 @@ var checkSelf = function(target_div,same){
 	console.log("came in");
 	console.log(target_div);
 	if(same == undefined || same == null || !same){
+		console.log("kuch same bheja hi nahi .. issi liye wapis");
 		return;
 	}
 	console.log("reached here atleast");
@@ -474,6 +465,7 @@ var efunc = function(){
 	var same = src[1];
 	var pass = src[0];
 	if(pass!='e'){
+		console.log("returning from log");
 		return;
 	}
 	var id = this.parentNode.id;

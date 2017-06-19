@@ -16,7 +16,7 @@ app.get('/one', function (req, res) {
 });
 
 app.get('/',function(req,res){
-  res.render('hello world');
+  res.render('intro');
 });
 
 io.use(function(socket, next){
