@@ -20,10 +20,66 @@ body{
 	color: white;
 }
 
+#black{
+	width: 300px;
+	height: 450px;
+	background-color: black;
+	opacity: 0.7;
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+}	
+
+#blackPlayer{
+	height: 80px;
+	width: 100%;
+	color: white;
+	display: flex;
+	justify-content: space-around;
+}
+
+.LI{
+	height: 75px;
+	width: 75px;
+}
+
+#livePB{
+	height: 300px;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#livePW{
+	height: 300px;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#white{
+	width: 300px;
+	height: 450px;
+	background-color: black;
+	opacity: 0.5;
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+}	
+
+#whitePlayer{
+	height: 80px;
+	width: 100%;
+	color: white;
+	display: flex;
+	justify-content: space-around;
+}
+
 #mainDiv{
 	height: 600px;
 	width: 600px;
 	position: relative;
+	background-color: black;
 }
 
 #boardDiv{

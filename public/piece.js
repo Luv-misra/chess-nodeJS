@@ -1,6 +1,7 @@
 var socket = io();
 var time = 0;
 var started = false;
+
 var x = function(){
 	setInterval(function(){
 		time = time + 1;
@@ -43,14 +44,27 @@ var authorize = function(target_div){
 socket.on('sides',function(data){
 	if(socket.id == data["white"]){
 		myside = "white";
+		document.getElementById('white').style.opacity = '0.9';
+		document.getElementById('uw').style.textDecoration='underline';
+		document.getElementById('black').style.opacity = '0.7';
+		document.getElementById('ub').style.textDecoration='none';
+
 	}else{
 		myside = "black";
+		document.getElementById('black').style.opacity = '0.9';
+		document.getElementById('ub').style.textDecoration='underline';
+		document.getElementById('white').style.opacity = '0.7';
+		document.getElementById('uw').style.textDecoration='none';
 	}
 });
 
 socket.on('message',function(data){
 
-	side = data["side"];
+	if(side == "white"){
+		side = "black";
+	}else{
+		side = "white";
+	}
 	document.getElementById('player').innerHTML = side;
 	time = 0;
 	if(!started){
@@ -80,7 +94,36 @@ socket.on('unauthorized', function(data){
     console.log("I am unauthorized");
 });
 
+var someOneWon = function(){
+	var wSide = null;
+	if(side == "white"){
+		wSide = "black";
+	}else{
+		wSide = "white";
+	}
 
+	alert(wSide + "  won :) :) :) ...congratulations");
+
+
+}
+
+var hatao = function(rsrc){
+	if(rsrc==null||!rsrc){
+		return;
+	}
+	var i = 1;
+	var id = rsrc[0]+rsrc[1]+i.toString();
+	var ele = document.getElementById(id);
+	while(!ele || ele.style.opacity == '0.1'){
+		i = i+1;
+		id = rsrc[0]+rsrc[1]+i.toString();
+		ele = document.getElementById(id);
+	}
+	ele.style.opacity ='0.1';
+	if(rsrc[0]=='k'){
+		someOneWon();
+	}
+}
 
 var checkAttack = function(attackedOn){
 	// console.log(whoMadeRed);
@@ -96,7 +139,7 @@ var checkAttack = function(attackedOn){
 	var attSrc = attackedOn.src;
 	split_result = attSrc.split('/');
 	attSrc = split_result[split_result.length-1];
-
+	
 	var Rsrc = whoMadeRed.src;
 
 	
@@ -203,6 +246,7 @@ var checkAttack = function(attackedOn){
 	console.log("second");
 	console.log(attackedOn.classList);
 	removeColor();
+	hatao(attSrc);
 }
 
 var removeColor = function(){
@@ -464,9 +508,7 @@ var efunc = function(){
 }
 
 var hfunc = function(){
-	if(!authorize(this)){
-		return;
-	}
+	
 	console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
 	console.log(this.onclick);
 	var Reddiv = this.parentNode;
@@ -552,9 +594,7 @@ var hfunc = function(){
 }
 
 var cfunc = function(){
-	if(!authorize(this)){
-		return;
-	}
+
 	var Reddiv = this.parentNode;
 	if(Reddiv.style.backgroundColor=='red'){
 					data = {};
@@ -616,9 +656,7 @@ var cfunc = function(){
 }
 
 var qfunc = function(){
-	if(!authorize(this)){
-		return;
-	}
+	
 	var Reddiv = this.parentNode;
 	if(Reddiv.style.backgroundColor=='red'){
 			data = {};
@@ -709,9 +747,7 @@ var qfunc = function(){
 }
 
 var kfunc = function(){
-	if(!authorize(this)){
-		return;
-	}
+	
 	var Reddiv = this.parentNode;
 	if(Reddiv.style.backgroundColor=='red'){
 			data = {};
