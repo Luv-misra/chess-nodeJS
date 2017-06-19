@@ -15,6 +15,10 @@ app.get('/one', function (req, res) {
    res.render('index',{name: name});
 });
 
+app.get('/',function(req,res){
+  res.render('hello world');
+});
+
 io.use(function(socket, next){
   
   if(io.sockets.rooms[name]==null || io.sockets.rooms[name]!=2){

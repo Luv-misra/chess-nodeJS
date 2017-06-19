@@ -142,6 +142,11 @@ var checkAttack = function(attackedOn){
 	
 	var Rsrc = whoMadeRed.src;
 
+	// var att = new function(){
+	// 	this.red = redSrc;
+	// 	this.att = attSrc;
+		
+	// }
 	
 	whoMadeRed.src="";
 	
