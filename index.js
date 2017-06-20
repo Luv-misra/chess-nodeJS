@@ -8,6 +8,8 @@ var white = null;
 var black = null;
 var side = "white";
 app.set('view engine', 'ejs');
+
+
 app.use( express.static( "public" ) );
 
 app.get('/one', function (req, res) {
@@ -57,6 +59,7 @@ io.use(function(socket, next){
 
 io.on('connection', function(socket){
   console.log('a user connected'+socket.room);
+  console.log(socket);
   idata = {};
   idata["white"] = white;
   idata["black"] = black;
@@ -72,6 +75,7 @@ io.on('connection', function(socket){
     data["side"] = side;
 
   	io.to(name).emit('message',data);
+    
   });
 
   socket.on('disconnect', function() {
