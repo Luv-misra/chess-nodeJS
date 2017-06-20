@@ -17,6 +17,7 @@ app.get('/one', function (req, res) {
    res.render('index',{name: name});
 });
 
+
 app.get('/',function(req,res){
   res.render('intro');
 });
@@ -59,7 +60,6 @@ io.use(function(socket, next){
 
 io.on('connection', function(socket){
   console.log('a user connected'+socket.room);
-  console.log(socket);
   idata = {};
   idata["white"] = white;
   idata["black"] = black;
@@ -77,6 +77,13 @@ io.on('connection', function(socket){
   	io.to(name).emit('message',data);
     
   });
+
+
+  socket.on('newMsg',function(data){
+    console.log("new message aaya");
+    io.to(name).emit('newMsg',data);  
+  });
+
 
   socket.on('disconnect', function() {
       console.log('Got disconnect!');

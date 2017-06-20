@@ -22,6 +22,49 @@ var whoMadeRed = null;
 var side = "white";
 var myside = null;
 
+var sendTxt = document.getElementById('sendTxt');
+var sendBtn = document.getElementById('sendBtn');
+var msgList = document.getElementById('msgList');
+
+sendTxt.addEventListener('keypress',function(e){
+	var code = (e.keyCode ? e.keyCode : e.which);
+    if (code == 13) { //Enter keycode                        
+        e.preventDefault();
+        send();
+    }
+});
+
+var send = function(){
+	data = {};
+	data['msg'] = sendTxt.value;
+	data['side'] = myside;
+	sendTxt.value = "";
+	socket.emit('newMsg',data);
+}
+
+sendBtn.addEventListener('click',send);
+
+socket.on('newMsg',function(data){
+	var item = data['side']+" : "+data['msg'];
+	var li = document.createElement("li");
+	li.appendChild(document.createTextNode(item));
+	li.style.width = '75%';
+	if(data['side']=='black'){
+		li.style.backgroundColor = 'black';
+		li.style.opacity = '0.7';
+		li.style.color = 'white';
+	}else{
+		li.style.backgroundColor = 'white';
+		li.style.opacity = '0.7';
+		li.style.color = 'black';
+	}
+	msgList.appendChild(li);
+	var elem = document.getElementById('chats');
+	console.log(elem);
+	console.log(elem.scrollHeight);
+  	elem.scrollTop = elem.scrollHeight;
+});
+
 var authorize = function(target_div){
 
 	console.log(target_div);
