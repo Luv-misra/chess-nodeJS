@@ -17,6 +17,13 @@ app.get('/one', function (req, res) {
    res.render('index',{name: name});
 });
 
+//this is trouble section
+
+app.post('/temp', function (req, res) {
+   console.log("hua hua hua hua hua hua")
+});
+
+//trouble section ends
 
 app.get('/',function(req,res){
   res.render('intro');
