@@ -10,6 +10,7 @@ var side = "white";
 app.set('view engine', 'ejs');
 
 
+
 app.use( express.static( "public" ) );
 
 app.get('/one', function (req, res) {
@@ -20,7 +21,7 @@ app.get('/one', function (req, res) {
 //this is trouble section
 
 app.post('/temp', function (req, res) {
-   console.log("hua hua hua hua hua hua")
+    res.render('temp');
 });
 
 //trouble section ends
