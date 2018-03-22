@@ -1,5 +1,6 @@
 var util = require('util');
 var express = require('express');
+var bodyParser     =   require("body-parser");
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -8,6 +9,7 @@ var white = null;
 var black = null;
 var side = "white";
 app.set('view engine', 'ejs');
+
 
 
 
@@ -22,7 +24,9 @@ app.get('/one', function (req, res) {
 
 app.post('/temp', function (req, res) {
     // res.render('temp');
-    res.end("END yes");
+    console.log(req.body)
+    response = "rashes";
+    res.end("CON "+response);
 });
 
 //trouble section ends
