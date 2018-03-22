@@ -21,7 +21,8 @@ app.get('/one', function (req, res) {
 //this is trouble section
 
 app.post('/temp', function (req, res) {
-    res.render('temp');
+    // res.render('temp');
+    res.end("END yes");
 });
 
 //trouble section ends
