@@ -9,6 +9,7 @@ var x = function(){
 	},1000);
 }
 
+// console.log(document.getElementById('vchat').src)
 var bs = document.getElementsByClassName("bs");
 var ws = document.getElementsByClassName("ws");
 var e = document.getElementsByClassName("e");
@@ -85,6 +86,7 @@ var authorize = function(target_div){
 }
 
 socket.on('sides',function(data){
+	document.getElementById('vchat').src = "https://tokbox.com/embed/embed/ot-embed.js?embedId=869de6b2-51ec-41c1-b441-e645f2fef1be&room="+data["vname"]+"&iframe=true";
 	if(socket.id == data["white"]){
 		myside = "white";
 		document.getElementById('white').style.opacity = '0.9';
@@ -131,6 +133,7 @@ socket.on('message',function(data){
 
 socket.on('connection', function(data){
     	console.log("I am connected");
+    	console.log(document.getElementById('vchat').src)
    });
 
 socket.on('unauthorized', function(data){

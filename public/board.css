@@ -2,6 +2,18 @@ body{
 	background-image: url("background.jpg") ;
 }
 
+#videoChat{
+	color:red;
+	position: fixed;
+	height: 250px;
+	width: 300px;
+	z-index: 4;
+	bottom: 10px;
+	left: 10px;
+	/*background-color: red;*/
+	margin: 0px;
+}
+
 #dbody{
 	display: flex;
 	justify-content: space-around;

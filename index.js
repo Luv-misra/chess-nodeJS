@@ -76,6 +76,7 @@ io.on('connection', function(socket){
   idata = {};
   idata["white"] = white;
   idata["black"] = black;
+  idata["vname"] = name;
   io.to(name).emit('sides',idata);
   socket.on('message',function(data){
   	console.log(data);
