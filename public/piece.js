@@ -469,7 +469,7 @@ var checkSelf = function(target_div,same){
 	console.log(img_src);
 	console.log(same);
 	console.log("meri wajah se src is ",img_src);
-	if(img_src==null || img_src==undefined || !img_src || img_src=="http:"){
+	if(img_src==null || img_src==undefined || !img_src || img_src=="https:"){
 		target_div.style.backgroundColor = 'red';
 		target_div.style.opacity = '0.5';
 		console.log("reached des...returning true");
