@@ -184,13 +184,13 @@ var checkAttack = function(attackedOn){
 	
 	var Rsrc = whoMadeRed.src;
 
-	whoMadeRed.src="";
+	whoMadeRed.src="//";
 	
 
 	if(Rsrc && redSrc){
 		attackedOn.src = Rsrc;
 	}else{
-		attackedOn.src="";
+		attackedOn.src="//";
 	}
 
 	var redF = null;
@@ -468,7 +468,8 @@ var checkSelf = function(target_div,same){
 	img_src = split_result[split_result.length-1];
 	console.log(img_src);
 	console.log(same);
-	if(img_src==null || img_src==undefined || !img_src){
+	console.log("meri wajah se src is ",img_src);
+	if(img_src==null || img_src==undefined || !img_src || img_src=="http:"){
 		target_div.style.backgroundColor = 'red';
 		target_div.style.opacity = '0.5';
 		console.log("reached des...returning true");
@@ -699,7 +700,7 @@ var cfunc = function(){
 }
 
 var qfunc = function(){
-	
+	console.log("mai queen hoon");
 	var Reddiv = this.parentNode;
 	if(Reddiv.style.backgroundColor=='red'){
 			data = {};
@@ -722,6 +723,7 @@ var qfunc = function(){
 	src = split_result[split_result.length-1];
 	var same = src[1];
 	var pass = src[0];
+	console.log("same,pass",same,pass);
 	if(pass!='q'){
 		return;
 	}
